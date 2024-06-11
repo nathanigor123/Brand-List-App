@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Monicahq\Cloudflare\Facades\CloudflareProxies;
+use Monicahq\Cloudflare\LaravelCloudflare;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        LaravelCloudflare::getProxiesUsing(fn() => CloudflareProxies::load());
     }
 }
