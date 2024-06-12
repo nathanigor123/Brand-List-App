@@ -9,7 +9,6 @@ use App\Http\Requests\Brand\UpdateBrandRequest;
 use App\Http\Resources\BrandResource;
 use App\Interfaces\BrandRepositoryInterface;
 use App\Models\Brand;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Stevebauman\Location\Facades\Location;
@@ -25,11 +24,11 @@ class BrandController extends Controller
     {
         $this->brandRepositoryInterface = $brandRepositoryInterface;
 
-       $ipAddress = request()->getClientIp();
+        $ipAddress = request()->getClientIp();
 
-       $location = Location::get($ipAddress);
+        $location = Location::get($ipAddress);
 
-       $this->userCountryCode =  $location->countryCode;
+        $this->userCountryCode =  $location ? $location->countryCode : null;
     }
     /**
      * Display a listing of the resource.
@@ -145,7 +144,6 @@ class BrandController extends Controller
             DB::commit();
 
             return ApiResponseClass::sendResponse(new BrandResource($brand), 'Brand Update Successful', 201);
-
         } catch (\Exception $ex) {
 
             return ApiResponseClass::rollback($ex);

@@ -16,6 +16,39 @@ class Brand extends Model
     const NOT_DEFAULT_BRAND = 0;
 
 
+    public static $exampleBrandNames = [
+        'Jackpot BOB',
+        'Cresus Casino',
+        'Casombie',
+        'Winoui Casino',
+        'Wild Sultan',
+        'Vegas​Plus',
+        'Ma​Chance',
+        'Ruby Vegas',
+        'Madnix',
+        'Azur Casino',
+        'Betzino',
+        'Casin​ozer',
+        'Neon​54',
+    ];
+
+    public static $exampleImageUrls = [
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/jackpotbob-casino.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/Cresus-Casino.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/Casombie-Casino.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/Winoui-Casino.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/Wild-Sultan-Casino.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/vegasplus-casino.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/MaChance-Casino.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/ruby-vegas-casino.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/Madnix.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/Azur-Casino.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/betzino-casino.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/Casinozer-Casino.png',
+        'https://www.casinoonlinefrancais.info/cdn-cgi/image/format=auto,width=75,height=75,quality=80/img/logo300/neon54-casino.png'
+    ];
+
+
     public function getBrandImageAttribute($value)
     {
         if (blank($value)) {
