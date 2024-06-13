@@ -11,7 +11,6 @@ use App\Interfaces\BrandRepositoryInterface;
 use App\Models\Brand;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Stevebauman\Location\Facades\Location;
 
 class BrandController extends Controller
 {
@@ -26,9 +25,7 @@ class BrandController extends Controller
 
         $ipAddress = request()->getClientIp();
 
-        $location = Location::get($ipAddress);
-
-        $this->userCountryCode =  $location ? $location->countryCode : null;
+        $this->userCountryCode = request()->hasHeader('CF-IPCountry') ? request()->header('CF-IPCountry') : null;
     }
     /**
      * Display a listing of the resource.
