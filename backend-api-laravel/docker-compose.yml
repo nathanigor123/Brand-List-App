@@ -1,0 +1,70 @@
+version: '3.9'
+services:
+
+  #PHP Service
+  brand-list-api-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: brand-list-api-app
+    container_name: app-brand-list-api
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: brand-list-api-app
+      SERVICE_TAGS: dev
+    working_dir: /var/www/brand-list-api/
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/var/www/brand-list-api/
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  #Phpmyadmin
+  brand-list-api-phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-brand-list-api
+    restart: always
+    ports:
+      - "8001:80"
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=${DB_HOST}
+      - PMA_USER=${DB_USERNAME}
+      - PMA_PASSWORD=${DB_PASSWORD}
+      - PMA_PORT=${DB_PORT}
+      - UPLOAD_LIMIT=1024M
+    networks:
+      - app-network
+
+  #MySQL Service
+  brand-list-api-db:
+    image: mysql:8.1
+    container_name: db-brand-list-api
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./mysql/mysql.cnf:/etc/mysql/mysql.cnf
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
