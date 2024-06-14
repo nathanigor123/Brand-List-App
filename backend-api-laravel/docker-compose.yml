@@ -15,7 +15,7 @@ services:
       SERVICE_TAGS: dev
     working_dir: /var/www/brand-list-api/
     ports:
-      - "8000:8000"
+      - "8100:8100"
     volumes:
       - ./:/var/www/brand-list-api/
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
@@ -28,7 +28,7 @@ services:
     container_name: phpmyadmin-brand-list-api
     restart: always
     ports:
-      - "8001:80"
+      - "8800:80"
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=${DB_HOST}
