@@ -4,8 +4,11 @@ services:
   #PHP Service
   brand-list-api-app:
     build:
+      args:
+        - UID=${UID:-1001}
+        - GID=${GID:-1001}
       context: .
-      dockerfile: Dockerfile
+      dockerfile: php.dockerfile
     image: brand-list-api-app
     container_name: app-brand-list-api
     restart: unless-stopped
@@ -14,11 +17,31 @@ services:
       SERVICE_NAME: brand-list-api-app
       SERVICE_TAGS: dev
     working_dir: /var/www/brand-list-api/
-    ports:
-      - "8100:8100"
     volumes:
       - ./:/var/www/brand-list-api/
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+ #Nginx Service
+  brand-list-api-webserver:
+    # image: nginx:alpine
+    build:
+      args:
+        - UID=${UID:-1001}
+        - GID=${GID:-1001}
+      context: .
+      dockerfile: nginx.dockerfile
+    image: brand-list-api-nginx
+    container_name: webserver-brand-list-api
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8800:80"
+      - "4443:443"
+    volumes:
+      - ./:/var/www/brand-list-api/
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks:
       - app-network
 
