@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+
+  #App Service
+  brand-list-client-app:
+    image: brand-list-client-app
+    build:
+      args:
+        - UID=${UID:-1001}
+        - GID=${GID:-1001}
+      context: .
+      dockerfile: Dockerfile
+    container_name: app-brand-list-client
+    ports:
+      - "4200:80"

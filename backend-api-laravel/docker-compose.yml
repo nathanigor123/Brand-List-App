@@ -51,7 +51,7 @@ services:
     container_name: phpmyadmin-brand-list-api
     restart: always
     ports:
-      - "8800:80"
+      - "8888:80"
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=${DB_HOST}
