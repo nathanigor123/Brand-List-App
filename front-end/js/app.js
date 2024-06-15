@@ -1,10 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
-    fetchTopList();
-  });
-  
   const API_BASE_URL = "http://localhost:8800/api";
   
   function fetchTopList() {
+    console.log('aa');
     fetch(`${API_BASE_URL}/brands/toplist`)
       .then((response) => response.json())
       .then((data) => {
@@ -74,3 +71,5 @@ document.addEventListener("DOMContentLoaded", function () {
   
     return starsHtml;
   }
+
+  fetchTopList();

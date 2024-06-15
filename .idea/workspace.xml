@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4581052d-19ec-4ce9-a364-3c3733d124e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/assets/fonts/poppins/Poppins-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/assets/fonts/poppins/Poppins-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Brand-List-App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Brand-List-App.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/js/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +194,7 @@
       <workItem from="1718039556754" duration="627000" />
       <workItem from="1718287179521" duration="2620000" />
       <workItem from="1718318048031" duration="250000" />
+      <workItem from="1718409251179" duration="1030000" />
     </task>
     <servers />
   </component>
